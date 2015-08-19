@@ -1,4 +1,4 @@
-package com.amazonaws.samples;
+package com.amazonaws.samples.instance;
 
 import java.util.ArrayList;
 import java.util.List;
