@@ -1,10 +1,14 @@
 package com.amazonaws.samples.instance;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.samples.keypair.S3CreateKeypair;
+import com.amazonaws.samples.security.S3CreateSecurity;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
 import com.amazonaws.services.ec2.model.BlockDeviceMapping;
@@ -46,6 +50,19 @@ public class S3CreateInstance {
 		instancesRequest.setMaxCount(1);
 		instancesRequest.setMinCount(1);
 		instancesRequest.setBlockDeviceMappings(blockDeviceMappings);
+		
+		S3CreateSecurity s3CreateSecurity = new S3CreateSecurity();
+		List<String> securityGroupIds = new ArrayList<>();
+		securityGroupIds.add(s3CreateSecurity.createSecurity());
+		
+		instancesRequest.setSecurityGroupIds(securityGroupIds);
+		
+		S3CreateKeypair s3CreateKeypair = new S3CreateKeypair();
+		try {
+			instancesRequest.setKeyName(s3CreateKeypair.createKeypair());
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		
 		RunInstancesResult runInstancesResult = ec2.runInstances(instancesRequest);
 		
