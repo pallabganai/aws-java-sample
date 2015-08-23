@@ -1,4 +1,4 @@
-package com.amazonaws.samples.keypair;
+package com.amazonaws.samples.ec2.keypair;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -35,11 +35,11 @@ public class S3CreateKeypair {
 		
 		KeyPair keyPair = createKeyPairResult.getKeyPair();
 		
-		PrintWriter writer = new PrintWriter("pallab-key.pem", "UTF-8");
+		PrintWriter writer = new PrintWriter("C:\\Users\\pkumar\\Dropbox\\Personal\\AWS\\pallab-key.pem", "UTF-8");
 		writer.println(keyPair.getKeyMaterial());
 		writer.close();
 		
-		System.out.println("KeyName - " +keyPair.getKeyName());
+		System.out.println("New KeyName - " +keyPair.getKeyName());
 		
 		return keyPair.getKeyName();
 	}

@@ -1,4 +1,4 @@
-package com.amazonaws.samples.security;
+package com.amazonaws.samples.ec2.security;
 
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;

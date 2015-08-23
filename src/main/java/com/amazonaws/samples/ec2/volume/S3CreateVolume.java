@@ -1,4 +1,4 @@
-package com.amazonaws.samples.volume;
+package com.amazonaws.samples.ec2.volume;
 
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;

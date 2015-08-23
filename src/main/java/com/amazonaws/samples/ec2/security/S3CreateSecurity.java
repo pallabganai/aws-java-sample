@@ -1,4 +1,4 @@
-package com.amazonaws.samples.security;
+package com.amazonaws.samples.ec2.security;
 
 import java.util.ArrayList;
 import java.util.List;
